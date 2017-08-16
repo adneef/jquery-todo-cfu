@@ -89,7 +89,8 @@
         // HINT: add the event listener to the <ol>, and use event.target to reference the specific <li> that was clicked within that
         // HINT: you can't call jQuery functions on raw HTML/DOM elements
         todoList.click(function(){
-          if(event.target && event.target !== todoList){
+
+          if(event.target && $(event.target).is($('li'))){
             $(event.target).toggleClass('done-task')
           }
         })
