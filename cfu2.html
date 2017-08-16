@@ -47,36 +47,60 @@
         // We will be creating a simulation of a basic To Do's app. Use jQuery as much as possible
 
         // Create a text <input> element with id "todoInput" for typing in a new todo item.
+        let todoItem = $('<input id = "todoInput"/>')
 
 
         // Create a <button> element with id "todoSubmit" whose button text is "Add"
+        let todoSubmit = $('<button id = "todoSubmit"/>').text('Add')
 
 
         // Create an <ol> element with id "todoList" for our created todo's to live in
+        let todoList = $('<ol id= "todoList"/>')
 
 
         // Append the <input>, <button>, and <ol> you just created to the <div> of class "container", in that order
+        let container = $('.container')
+        container.append(todoItem, todoSubmit, todoList)
 
 
         // Create 2 <li> elements whose inner text is each some made up task. Append these to the <ol> element you made above.
+        let li1 = $('<li/>').text('Walk the dog')
+        let li2 = $('<li/>').text('Go to Costco')
+        todoList.append(li1, li2)
 
 
         // Create and attach another <li> with a made up task BEFORE the second task you appended above
+        let li3 = $('<li/>').text('Eat leftovers')
+        li3.insertBefore(li2)
 
 
         // Add functionality to the button so when clicked,
         // it takes the text input value and creates a new <li> under the <ol> for the todo item.
         // It should also blank out the value of the text input
+        todoSubmit.click(function(){
+          let li = $('<li/>').text(todoItem.val())
+          todoList.append(li)
+          todoItem.val("")
+        })
 
 
         // Add another event listener so that when an <li> is clicked, it will toggle the class "done-task" on that <li>
         // Toggling means the first time you click, the class is added. Click again, it's removed.
         // HINT: add the event listener to the <ol>, and use event.target to reference the specific <li> that was clicked within that
         // HINT: you can't call jQuery functions on raw HTML/DOM elements
+        todoList.click(function(){
+          if(event.target && event.target !== todoList){
+            $(event.target).toggleClass('done-task')
+          }
+        })
 
 
         // Add an event listener on the click for the <button id="todoMinimize"> so that when clicked it "slide" toggles the container div
         // HINT: jQuery docs on slide animations
+        let mini = $('#todoMinimize')
+        mini.click(function(){
+          container.slideToggle()
+        })
 
 
       });

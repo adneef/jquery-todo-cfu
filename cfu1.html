@@ -20,14 +20,19 @@
         var element = $('div:last-child div div').filter(':last-child')[0];
 
         // use first() or last()
+        var element = $('span').first()[0]
 
         // use eq()
+        var element = $('span').eq(0)[0]
 
         // use next() or prev()
+        // var element = $('div').css('')
 
         // use closest()
+        var element = $('span').closest('span')[0]
 
         // use find()
+        var element = $('div').find('span')[0]
 
         console.log(element);
       });
